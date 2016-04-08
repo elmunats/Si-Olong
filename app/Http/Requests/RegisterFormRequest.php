@@ -37,4 +37,12 @@ class RegisterFormRequest extends Request
         'email' => 'aLLrEADY.',
     ];
   }
+  
+  public function messages()
+{
+    return [
+        'email.required' => 'Er, you forgot your email address!',
+        'email.unique' => 'Email already taken m8',
+    ];
+}
 }

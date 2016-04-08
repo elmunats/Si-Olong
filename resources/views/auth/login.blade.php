@@ -30,7 +30,7 @@
 <body class="login">
     <!-- BEGIN LOGO -->
     <div class="logo">
-<img src="{{ asset('assets/img/logo.png') }}" width="200" height="150" alt=""/> </div>
+<img src="{{ asset('assets/img/logo1.png') }}" width="200" height="150" alt=""/> </div>
         <!-- PUT YOUR LOGO HERE -->
     </div>
     <!-- END LOGO -->
@@ -44,13 +44,23 @@
                 <button class="close" data-dismiss="alert"></button>
                 <span>Enter any username and password.</span>
             </div>
+           @if (count($errors) > 0)
+    <div class="alert alert-danger">
+        <strong>Whoops!</strong> There were some problems with your input.<br><br>
+        <ul>
+            @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+            @endforeach
+        </ul>
+    </div>
+@endif
             <div class="control-group">
                 <!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
                 <label class="control-label visible-ie8 visible-ie9">Username</label>
                 <div class="controls">
                     <div class="input-icon left">
                         <i class="icon-user"></i>
-                        <input class="m-wrap placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" />
+                        <input class="m-wrap placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username" value="{{ old('username') }}"/>
                     </div>
                 </div>
             </div>
@@ -59,7 +69,7 @@
                 <div class="controls">
                     <div class="input-icon left">
                         <i class="icon-lock"></i>
-                        <input class="m-wrap placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password"/>
+                        <input class="m-wrap placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password" value="{{ old('password') }}"/>
                     </div>
                 </div>
             </div>
@@ -74,9 +84,8 @@
             <div class="forget-password">
                 <h4>Forgot your password ?</h4>
                 <p>
-                    no worries, click  {!! link_to('auth/reset','Create an account',array('javascript:;','id'=>'register-btn'))!!}<a href="javascript:;"  id="forget-password">here</a>
-                    to reset your password.
-                </p>
+                    no worries, click  {!! link_to('password/email',' to reset your password.',array('javascript:;','id'=>'forget-password'))!!}
+                               </p>
             </div>
             <div class="create-account">
                 <p>

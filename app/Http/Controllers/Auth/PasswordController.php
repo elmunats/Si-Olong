@@ -4,7 +4,8 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Auth\ResetsPasswords;
-
+use Illuminate\Foundation\Auth\PasswordsBroker;
+use App\UserUbah;
 class PasswordController extends Controller
 {
     /*
@@ -25,8 +26,31 @@ class PasswordController extends Controller
      *
      * @return void
      */
+
+     protected $redirectTo = '/';
     public function __construct()
     {
         $this->middleware('guest');
     }
+
+     protected function validator(array $data)
+    {
+        return Validator::make($data, [
+            'username' => 'required|max:255|unique:users',
+             'email' => 'required|email|max:255|unique:users',
+          'password' => 'required|min:255|',
+          'password_confirmation' => 'min:6|same:password'
+        ]);
+    }
+
+   // public function postEmail(){
+//$response = PasswordBroker::sendResetLink($request->only('email'), function (Message $message) {
+    //        $message->subject($this->getEmailSubject());
+  //      });
+
+
+    //}
+    
+
+    
 }

@@ -13,9 +13,13 @@ var Login = function () {
 	                    required: true
 	                },
 	                password: {
-	                    required: true,
-	                    minlength: 6, 
-	                    maxlength: 16
+	                   maxlength:16,
+	                   minlength:6,
+	                   upper:true,
+	                   required: true,
+	                  lower:true,
+	                  digits:true
+
 	                },
 	                remember: {
 	                    required: false
@@ -116,10 +120,10 @@ var Login = function () {
 	                return false;
 	            }
 	        });
-
+ 			jQuery('.forget-form').show();
 	        jQuery('#forget-password').click(function () {
 	            jQuery('.login-form').hide();
-	            jQuery('.forget-form').show();
+	           
 	        });
 
 	        jQuery('#back-btn').click(function () {
@@ -168,10 +172,7 @@ var Login = function () {
 	                email: {
 	                    required: true,
 	                    email: true,
-	                  // remote:"chek_email.php"
-	                    //	type:"post",
-	                    	//url:"auth/register"
-							//	}
+	                  
 //
 	            },
 	                address: {
@@ -194,14 +195,16 @@ var Login = function () {
 	                    upper:true,
 	                    required: true,
 	                  lower:true,
-	                  digits:true
-
-	                    
+                  digits:true
+                   
 	                },
 	                rpassword: {
-	                    equalTo: "#register_password"
+	                    equalTo: "#register_password",
+	                    
 	                },
-
+ 				image: {
+	                    image: true
+	                },
 	                tnc: {
 	                    required: true
 	                }

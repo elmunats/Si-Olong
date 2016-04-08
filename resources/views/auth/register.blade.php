@@ -10,7 +10,7 @@
     <meta content="" name="description" />
     <meta content="" name="author" />
     <!-- BEGIN GLOBAL MANDATORY STYLES -->
-    <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.min.css') }} " rel="stylesheet" type="text/css"/>
+    <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap.css') }} " rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/plugins/bootstrap/css/bootstrap-responsive.min.css') }} " rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/plugins/font-awesome/css/font-awesome.min.css') }} " rel="stylesheet" type="text/css"/>
     <link href="{{ asset('assets/css/style-metro.css') }} " rel="stylesheet" type="text/css"/>
@@ -32,39 +32,28 @@
     <!-- BEGIN LOGO -->
     <div class="logo">
         <!-- PUT YOUR LOGO HERE -->
-        <img src="{{ asset('assets/img/logo.png') }}" width="200" height="150" alt=""/> </div>
+        <img src="{{ asset('assets/img/logo1.png') }}" width="200" height="150" alt=""/> </div>
         <!-- PUT YOUR LOGO HERE -->
     </div>
     <!-- END LOGO -->
       <div class="content">
-             <!-- BEGIN FORGOT PASSWORD FORM -->
-        <form class="form-vertical forget-form" action="index.html" method="post">
-            <h3 >Forget Password ?</h3>
-            <p>Enter your e-mail address below to reset your password.</p>
-            <div class="control-group">
-                <div class="controls">
-                    <div class="input-icon left">
-                        <i class="icon-envelope"></i>
-                        <input class="m-wrap placeholder-no-fix" type="text" placeholder="Email" autocomplete="off" name="email" />
-                    </div>
-                </div>
-            </div>
-            <div class="form-actions">
-                <button type="button" id="back-btn" class="btn">
-                <i class="m-icon-swapleft"></i> Back
-                </button>
-                <button type="submit" class="btn blue pull-right">
-                Submit <i class="m-icon-swapright m-icon-white"></i>
-                </button>            
-            </div>
-        </form>
-        <!-- END FORGOT PASSWORD FORM -->
+                    <!-- END FORGOT PASSWORD FORM -->
         <!-- BEGIN REGISTRATION FORM -->
      <form class="form-vertical register-form" action="{{ url('auth/register') }}" method="post"> 
         {!! csrf_field() !!}
-        
+
             <h3 >Sign Up</h3>
             <p>Enter your personal details below:</p>
+          @if ($errors->has('email'))
+            <span class="help-block">
+                <strong>{{ $errors->first('email') }}</strong>
+            </span>
+        @endif
+         @if ($errors->has('username'))
+            <span class="help-block">
+                <strong>{{ $errors->first('username') }}</strong>
+            </span>
+        @endif
             
             <div class="control-group">
                 <label class="control-label visible-ie8 visible-ie9">Full Name</label>
@@ -358,7 +347,7 @@
                     </div>
                 </div>
             </div>
-            <div class="control-group">
+                        <div class="control-group">
                 <label class="control-label visible-ie8 visible-ie9">Password</label>
                 <div class="controls">
                     <div class="input-icon left">
@@ -372,15 +361,21 @@
                 <div class="controls">
                     <div class="input-icon left">
                         <i class="icon-ok"></i>
-                        <input class="m-wrap placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="
-                        password"/>
+    <input class="m-wrap placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="rpassword"/>
                     </div>
                 </div>
             </div>
             <div class="control-group">
+                    <label class="col-md-4 control-label" for="filebutton">Upload Foto</label>
+                    <div class="col-md-4">
+                <input id="image" name="image" class="input-file" type="file">
+             </div>
+                        </div>
+            <div class="control-group">
                 <div class="controls">
                     <label class="checkbox">
-                    <input type="checkbox" name="tnc"/> I agree to the <a href="#">Terms of Service</a> and <a href="#">Privacy Policy</a>
+                    <input type="checkbox" name="tnc"/> I agree to the {!! link_to('auth/term','Term of Service')
+                 !!}and <a href="#">Privacy Policy</a>
                     </label>  
                     <div id="register_tnc_error"></div>
                 </div>

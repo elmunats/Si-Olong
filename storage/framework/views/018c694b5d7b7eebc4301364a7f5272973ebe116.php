@@ -37,35 +37,24 @@
     </div>
     <!-- END LOGO -->
       <div class="content">
-             <!-- BEGIN FORGOT PASSWORD FORM -->
-        <form class="form-vertical forget-form" action="index.html" method="post">
-            <h3 >Forget Password ?</h3>
-            <p>Enter your e-mail address below to reset your password.</p>
-            <div class="control-group">
-                <div class="controls">
-                    <div class="input-icon left">
-                        <i class="icon-envelope"></i>
-                        <input class="m-wrap placeholder-no-fix" type="text" placeholder="Email" autocomplete="off" name="email" />
-                    </div>
-                </div>
-            </div>
-            <div class="form-actions">
-                <button type="button" id="back-btn" class="btn">
-                <i class="m-icon-swapleft"></i> Back
-                </button>
-                <button type="submit" class="btn blue pull-right">
-                Submit <i class="m-icon-swapright m-icon-white"></i>
-                </button>            
-            </div>
-        </form>
-        <!-- END FORGOT PASSWORD FORM -->
+                    <!-- END FORGOT PASSWORD FORM -->
         <!-- BEGIN REGISTRATION FORM -->
      <form class="form-vertical register-form" action="<?php echo e(url('auth/register')); ?>" method="post"> 
         <?php echo csrf_field(); ?>
 
-        
+
             <h3 >Sign Up</h3>
             <p>Enter your personal details below:</p>
+          <?php if($errors->has('email')): ?>
+            <span class="help-block">
+                <strong><?php echo e($errors->first('email')); ?></strong>
+            </span>
+        <?php endif; ?>
+         <?php if($errors->has('username')): ?>
+            <span class="help-block">
+                <strong><?php echo e($errors->first('username')); ?></strong>
+            </span>
+        <?php endif; ?>
             
             <div class="control-group">
                 <label class="control-label visible-ie8 visible-ie9">Full Name</label>
@@ -359,7 +348,7 @@
                     </div>
                 </div>
             </div>
-            <div class="control-group">
+                        <div class="control-group">
                 <label class="control-label visible-ie8 visible-ie9">Password</label>
                 <div class="controls">
                     <div class="input-icon left">
@@ -378,6 +367,12 @@
                     </div>
                 </div>
             </div>
+            <div class="control-group">
+                    <label class="col-md-4 control-label" for="filebutton">Upload Foto</label>
+                    <div class="col-md-4">
+                <input id="image" name="image" class="input-file" type="file">
+             </div>
+                        </div>
             <div class="control-group">
                 <div class="controls">
                     <label class="checkbox">

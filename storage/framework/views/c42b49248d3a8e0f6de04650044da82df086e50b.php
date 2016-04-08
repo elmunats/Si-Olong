@@ -1,130 +1,183 @@
+
 <!DOCTYPE html>
-<!--[if IE 8]> <html lang="en" class="ie8"> <![endif]-->
-<!--[if IE 9]> <html lang="en" class="ie9"> <![endif]-->
-<!--[if !IE]><!--> <html lang="en"> <!--<![endif]-->
-<!-- BEGIN HEAD -->
-<head>
-	<meta charset="utf-8" />
-	<title>Login Form</title>
-	<meta content="width=device-width, initial-scale=1.0" name="viewport" />
-	<meta content="" name="description" />
-	<meta content="" name="author" />
-	<!-- BEGIN GLOBAL MANDATORY STYLES -->
-	<link href="assets/plugins/bootstrap/css/bootstrap.min.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/plugins/bootstrap/css/bootstrap-responsive.min.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/plugins/font-awesome/css/font-awesome.min.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/css/style-metro.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/css/style.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/css/style-responsive.css" rel="stylesheet" type="text/css"/>
-	<link href="assets/css/themes/default.css" rel="stylesheet" type="text/css" id="style_color"/>
-	<link href="assets/plugins/uniform/css/uniform.default.css" rel="stylesheet" type="text/css"/>
-	<link rel="stylesheet" type="text/css" href="assets/plugins/select2/select2_metro.css" />
-	<!-- END GLOBAL MANDATORY STYLES -->
-	<!-- BEGIN PAGE LEVEL STYLES -->
-	<link href="assets/css/pages/login-soft.css" rel="stylesheet" type="text/css"/>
-	<!-- END PAGE LEVEL STYLES -->
-	<link rel="shortcut icon " href="favicon.ico" />
-</head>
-<!-- END HEAD -->
-<!-- BEGIN BODY -->
-<body class="login">
-	<!-- BEGIN LOGO -->
-	<div class="logo">
-		<!-- PUT YOUR LOGO HERE -->
-     <img src="assets/img/logo.png" width="1280" height="685" alt=""/> </div>
-	<!-- END LOGO -->
-	<!-- BEGIN LOGIN -->
-	<div class="content">
-		<!-- BEGIN LOGIN FORM -->
-		<form class="form-vertical login-form" action="welcom" method="post">
-			<h3 class="form-title">Login to your account</h3>
-			<div class="alert alert-error hide">
-				<button class="close" data-dismiss="alert"></button>
-				<span>Enter any username and password.</span>
-			</div>
-			<div class="control-group">
-				<!--ie8, ie9 does not support html5 placeholder, so we just show field title for that-->
-				<label class="control-label visible-ie8 visible-ie9">Username</label>
-				<div class="controls">
-					<div class="input-icon left">
-						<i class="icon-user"></i>
-						<input class="m-wrap placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
-					</div>
-				</div>
-			</div>
-			<div class="control-group">
-				<label class="control-label visible-ie8 visible-ie9">Password</label>
-				<div class="controls">
-					<div class="input-icon left">
-						<i class="icon-lock"></i>
-						<input class="m-wrap placeholder-no-fix" type="password" autocomplete="off" placeholder="Password" name="password"/>
-					</div>
-				</div>
-			</div>
-			<div class="form-actions">
-				<label class="checkbox">
-				<input type="checkbox" name="remember" value="1"/> Remember me
-				</label>
-				<button type="submit" class="btn blue pull-right">
-				Login <i class="m-icon-swapright m-icon-white"></i>
-				</button>            
-			</div>
-			<div class="forget-password">
-				<h4>Forgot your password ?</h4>
-				<p>
-					no worries, click <a href="javascript:;"  id="forget-password">here</a>
-					to reset your password.
-				</p>
-			</div>
-			<div class="create-account">
-				<p>
-					Don't have an account yet ?&nbsp; 
-					<a href="javascript:;" id="register-btn" >Create an account</a>
-				</p>
-			</div>
-		</form>
-		<!-- END LOGIN FORM -->        
-	<?php echo $__env->yieldContent('content'); ?>
-	</div>
-	<!-- END LOGIN -->
-	<!-- BEGIN COPYRIGHT -->
-	<div class="copyright">
-		2016 &copy; <!--<a href="http://www.justukfreebies.co.uk/">-->SI OLONG<!--</a>--> Login Form
-	</div
-	><!-- END COPYRIGHT -->
-	<!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->
-	<!-- BEGIN CORE PLUGINS -->   <script src="assets/plugins/jquery-1.10.1.min.js" type="text/javascript"></script>
-	<script src="assets/plugins/jquery-migrate-1.2.1.min.js" type="text/javascript"></script>
-	<!-- IMPORTANT! Load jquery-ui-1.10.1.custom.min.js before bootstrap.min.js to fix bootstrap tooltip conflict with jquery ui tooltip -->
-	<script src="assets/plugins/jquery-ui/jquery-ui-1.10.1.custom.min.js" type="text/javascript"></script>      
-	<script src="assets/plugins/bootstrap/js/bootstrap.min.js" type="text/javascript"></script>
-	<script src="assets/plugins/bootstrap-hover-dropdown/twitter-bootstrap-hover-dropdown.min.js" type="text/javascript" ></script>
-	<!--[if lt IE 9]>
-	<script src="assets/plugins/excanvas.min.js"></script>
-	<script src="assets/plugins/respond.min.js"></script>  
-	<![endif]-->   
-	<script src="assets/plugins/jquery-slimscroll/jquery.slimscroll.min.js" type="text/javascript"></script>
-	<script src="assets/plugins/jquery.blockui.min.js" type="text/javascript"></script>  
-	<script src="assets/plugins/jquery.cookie.min.js" type="text/javascript"></script>
-	<script src="assets/plugins/uniform/jquery.uniform.min.js" type="text/javascript" ></script>
-	<!-- END CORE PLUGINS -->
-	<!-- BEGIN PAGE LEVEL PLUGINS -->
-	<script src="assets/plugins/jquery-validation/dist/jquery.validate.min.js" type="text/javascript"></script>
-	<script src="assets/plugins/backstretch/jquery.backstretch.min.js" type="text/javascript"></script>
-	<script type="text/javascript" src="assets/plugins/select2/select2.min.js"></script>
-	<!-- END PAGE LEVEL PLUGINS -->
-	<!-- BEGIN PAGE LEVEL SCRIPTS -->
-	<script src="assets/scripts/app.js" type="text/javascript"></script>
-	<script src="assets/scripts/login-soft.js" type="text/javascript"></script>      
-	<!-- END PAGE LEVEL SCRIPTS --> 
-	<script>
-		jQuery(document).ready(function() {     
-		  App.init();
-		  Login.init();
-		});
-	</script>
-	<!-- END JAVASCRIPTS -->
-	<!--<div style="position:absolute; bottom:0px; left:0px; "><a href="http://www.justukfreebies.co.uk/website-templates/free-responsive-login-form-template/">Free Website Templates</a></div>-->
-</body>
-<!-- END BODY -->
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <link rel="icon" href="../../favicon.ico">
+
+    <title>Sistem Tolong Menolong (SIOLONG)</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="<?php echo e(asset('css/bootstrap.min.css')); ?>" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="<?php echo e(asset('css/navbar-fixed-top.css')); ?>" rel="stylesheet">
+
+    <!-- Just for debugging purposes. Don't actually copy these 2 lines! -->
+    <!--[if lt IE 9]><script src="../../assets/js/ie8-responsive-file-warning.js"></script><![endif]-->
+    <script src="../../assets/js/ie-emulation-modes-warning.js"></script>
+
+    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+      <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+      <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+    <![endif]-->
+  </head>
+
+  <body>
+
+    <!-- Fixed navbar -->
+    <nav class="navbar navbar-default navbar-fixed-top">
+      <div class="container">
+        <div class="navbar-header">
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <a class="navbar-brand" href="#"><span class="glyphicon glyphicon-btc" aria-hidden="true"></span> SioLong</a>
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul class="nav navbar-nav">
+            <li class="active"><a href="#"><span class="glyphicon glyphicon-home" aria-hidden="true"></span> Home</a></li>
+            <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-th" aria-hidden="true"></span> Kategori</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+             <li class="dropdown">
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-shopping-cart" aria-hidden="true"></span> Transaksi</a>
+              <ul class="dropdown-menu">
+                <li><a href="#">Action</a></li>
+                <li><a href="#">Another action</a></li>
+                <li><a href="#">Something else here</a></li>
+                <li><a href="#">Separated link</a></li>
+                <li><a href="#">One more separated link</a></li>
+              </ul>
+            </li>
+           <li><a href="#about"><span class="glyphicon glyphicon-calendar" aria-hidden="true"></span> Laporan</a></li>
+           <li><a href="#about"><span class="glyphicon glyphicon-camera" aria-hidden="true"></span> Pinjamkan Barang</a></li>
+            <li><form class="navbar-form " role="search">
+        <div class="form-group">
+          <input type="text" class="form-control" placeholder="Search">
+        </div>
+        <button type="submit" class="btn btn-default">Cari Barang</button></form>
+              </li>
+          </ul>
+ 
+          <ul class="nav navbar-nav navbar-right">
+         <li class="dropdown">
+         <?php if(Auth::guest()): ?>
+              <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span> User </a>
+              <ul class="dropdown-menu">
+          
+                <li><a href="<?php echo e(url('auth/login')); ?>"><span class="glyphicon glyphicon-log-in" aria-hidden="true"></span> Login</a></li>
+               <?php else: ?>
+      <a href="" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false"><span class="glyphicon glyphicon-user" aria-hidden="true"></span>Halo, <?php echo e(Auth::user()->name); ?> </a>
+              <ul class="dropdown-menu">
+           <li><a href="<?php echo e(url('auth/logout')); ?>"><span class="glyphicon glyphicon-log-out" aria-hidden="true"></span> Logout </a></li>
+           <?php endif; ?>
+          
+                 <li><a href="#about"><span class="glyphicon glyphicon-gift" aria-hidden="true"></span> Reward</a></li>
+             <li><a href="#about"><span class="glyphicon glyphicon-cog" aria-hidden="true"></span> Setting</a></li>
+           
+              </ul>
+            </li>
+            
+      
+            
+          </ul>
+        </div><!--/.nav-collapse -->
+      </div>
+    </nav>
+
+
+
+    <?php echo $__env->yieldContent('content'); ?>
+
+     <!-- /container -->
+<div class="container well">
+    <div class="row">
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-7">
+        <div class="row">
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+            <div>
+              <ul class="list-unstyled">
+                <li> <a>Link anchor</a> </li>
+                <li> <a>Link anchor</a> </li>
+                <li> <a>Link anchor</a> </li>
+                <li> <a>Link anchor</a> </li>
+                <li> <a>Link anchor</a> </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4  col-xs-6">
+            <div>
+              <ul class="list-unstyled">
+                <li> <a>Link anchor</a> </li>
+                <li> <a>Link anchor</a> </li>
+                <li> <a>Link anchor</a> </li>
+                <li> <a>Link anchor</a> </li>
+                <li> <a>Link anchor</a> </li>
+              </ul>
+            </div>
+          </div>
+          <div class="col-sm-4 col-md-4 col-lg-4 col-xs-6">
+            <div>
+              <ul class="list-unstyled">
+                <li> <a>Link anchor</a> </li>
+                <li> <a>Link anchor</a> </li>
+                <li> <a>Link anchor</a> </li>
+                <li> <a>Link anchor</a> </li>
+                <li> <a>Link anchor</a> </li>
+              </ul>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="col-xs-6 col-sm-6 col-md-6 col-lg-5"> 
+        <address>
+        <strong>MyStoreFront, Inc.</strong><br>
+        Indian Treasure Link<br>
+        Quitman, WA, 99110-0219<br>
+        <abbr title="Phone">P:</abbr> (123) 456-7890
+      </address>
+        <address>
+        <strong>Full Name</strong><br>
+        <a href="mailto:#">first.last@example.com</a>
+        </address>
+        </div>
+    </div>
+  </div>
+
+<footer class="text-center">
+  <div class="container">
+    <div class="row">
+      <div class="col-xs-12">
+        <p>Copyright © Si Olong. All rights reserved.</p>
+      </div>
+    </div>
+  </div>
+</footer>
+
+    <!-- Bootstrap core JavaScript
+    ================================================== -->
+    <!-- Placed at the end of the document so the pages load faster -->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> 
+    <script src="<?php echo e(asset('js/bootstrap.min.js')); ?>"></script>
+     <script src="<?php echo e(asset('js/jquery.min.js')); ?>"></script>
+    <!-- IE10 viewport hack for Surface/desktop Windows 8 bug -->
+    <script src="<?php echo e(asset('js/ie10-viewport-bug-workaround.js')); ?>"></script>
+  </body>
 </html>

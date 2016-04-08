@@ -5,7 +5,7 @@
 <!-- BEGIN HEAD -->
 <head>
     <meta charset="utf-8" />
-    <title>Register Form</title>
+    <title>SiOlong</title>
     <meta content="width=device-width, initial-scale=1.0" name="viewport" />
     <meta content="" name="description" />
     <meta content="" name="author" />
@@ -38,9 +38,19 @@
     <!-- END LOGO -->
       <div class="content">
              <!-- BEGIN FORGOT PASSWORD FORM -->
-        <form class="form-vertical forget-form" action="index.html" method="post">
-            <h3 >Forget Password ?</h3>
-            <p>Enter your e-mail address below to reset your password.</p>
+              <h3 >Forget Password ?</h3>
+          
+        <form class="form-vertical forget-form" action="{{ url('/password/reset') }}" method="post">
+       {!! csrf_field() !!}
+<input type="hidden" name="token" value="{{ $token }}">
+             <p>Enter your e-mail address below to reset your password.</p>
+                            @if (count($errors) > 0)
+                <ul>
+                @foreach ($errors->all() as $error)
+                <li>{{ $error }}</li>
+                @endforeach
+                </ul>
+                @endif
             <div class="control-group">
                 <div class="controls">
                     <div class="input-icon left">
@@ -49,22 +59,49 @@
                     </div>
                 </div>
             </div>
+             <div class="control-group">
+                <label class="control-label visible-ie8 visible-ie9">Username</label>
+                <div class="controls">
+                    <div class="input-icon left">
+                        <i class="icon-user"></i>
+                        <input class="m-wrap placeholder-no-fix" type="text" autocomplete="off" placeholder="Username" name="username"/>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label visible-ie8 visible-ie9">Password</label>
+                <div class="controls">
+                    <div class="input-icon left">
+                        <i class="icon-lock"></i>
+                        <input class="m-wrap placeholder-no-fix" type="password" autocomplete="off" id="register_password" placeholder="Password" name="password"/>
+                    </div>
+                </div>
+            </div>
+            <div class="control-group">
+                <label class="control-label visible-ie8 visible-ie9">Re-type Your Password</label>
+                <div class="controls">
+                    <div class="input-icon left">
+                        <i class="icon-ok"></i>
+                        <input class="m-wrap placeholder-no-fix" type="password" autocomplete="off" placeholder="Re-type Your Password" name="password_confirmation"/>
+                    </div>
+                </div>
+            </div>
             <div class="form-actions">
-                <button type="button" id="back-btn" class="btn">
-                <i class="m-icon-swapleft"></i> Back
-                </button>
+               
+                 {!! link_to('/password/email','Back'
+                 ,array('type'=>'button','class'=>'btn blue pull-left'))!!}
                 <button type="submit" class="btn blue pull-right">
-                Submit <i class="m-icon-swapright m-icon-white"></i>
+                Reset <i class="m-icon-swapright m-icon-white"></i>
                 </button>            
             </div>
         </form>
+
         <!-- END FORGOT PASSWORD FORM -->
-       
-    </div>
+           </div>
     <!-- END LOGIN -->
     <!-- BEGIN COPYRIGHT -->
     <div class="copyright">
-        2016 &copy; siOlong Register Form
+        2016 &copy; siOlong Reset Form
     </div>
     <!-- END COPYRIGHT -->
     <!-- BEGIN JAVASCRIPTS(Load javascripts at bottom, this will reduce page load time) -->

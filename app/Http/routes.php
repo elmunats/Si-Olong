@@ -1,7 +1,7 @@
 <?php
 
 /*
-|--------------------------------------------------------------------------
+|--------------------e------------------------------------------------------
 | Routes File
 |--------------------------------------------------------------------------
 |
@@ -11,27 +11,20 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 
 Route::get('template', function () {
     return view('template'); 
     });
-Route::get('dashboard', function () {
-    return view('dashboard'); 
+
+
+
+Route::get('dashboard', function() {
+return view('template'); 
     });
-Route::get('auth/login', 'Auth\AuthController@getLogin');
-Route::post('auth/login', 'Auth\AuthController@postLogin');
-Route::get('auth/logout', 'Auth\AuthController@getLogout');
 
-   
 
-Route::get('validateemail',
-                array('uses'=>'UserController@validateEmail'));
+  // Password reset link request routes...
 
-  
 // Registration routes...
 
 /*
@@ -47,11 +40,28 @@ Route::get('validateemail',
 
 Route::group(['middleware' => ['web']], function () {
 
-//
-	Route::post('auth/register', 'Auth\AuthController@postRegister');
+Route::get('auth/login', 'Auth\AuthController@getLogin');
+Route::post('auth/login', 'Auth\AuthController@postLogin');
+Route::post('auth/register', 'Auth\AuthController@postRegister');
 Route::get('auth/register', 'Auth\AuthController@getRegister');
+Route::get('auth/logout', 'Auth\AuthController@getLogout');
+
+
+Route::get('password/email', 'Auth\PasswordController@getEmail');
+Route::post('password/email', 'Auth\PasswordController@postEmail');
+// Password reset routes...
+Route::get('password/reset/{token}', 'Auth\PasswordController@getReset');
+Route::post('password/reset/', 'Auth\PasswordController@postReset');
+
+Route::get('auth/term',function (){
+	return view('auth/term');
+
 });
 
-Route::get('/', function() {
-return "Anda berhasil login";
+
+Route::get('/', function () {
+    return view('dashboard');
 });
+
+});
+
