@@ -30,7 +30,7 @@
 <body class="login">
     <!-- BEGIN LOGO -->
     <div class="logo">
-<img src="{{ asset('assets/img/logo1.png') }}" width="200" height="150" alt=""/> </div>
+<img src="{{ asset('assets/img/logoSiolong.png') }}" width="200" height="150" alt=""/> </div>
         <!-- PUT YOUR LOGO HERE -->
     </div>
     <!-- END LOGO -->
